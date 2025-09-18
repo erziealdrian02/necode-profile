@@ -1,68 +1,93 @@
-import { type SharedData } from '@/types';
-import { Head, Link, usePage } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
+import { ThemeToggle } from '../components/ThemeToggle';
 
 export default function Welcome() {
-    const { auth } = usePage<SharedData>().props;
-
     return (
         <>
-            <Head title="Welcome">
-                <link rel="preconnect" href="https://fonts.bunny.net" />
-                <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-            </Head>
-            <div className="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
-                <header className="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl">
-                    <nav className="flex items-center justify-end gap-4">
-                        {auth.user ? (
-                            <Link
-                                href={route('dashboard')}
-                                className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                            >
-                                Dashboard
-                            </Link>
-                        ) : (
-                            <>
-                                <Link
-                                    href={route('login')}
-                                    className="inline-block rounded-sm border border-transparent px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#19140035] dark:text-[#EDEDEC] dark:hover:border-[#3E3E3A]"
-                                >
-                                    Log in
-                                </Link>
-                                <Link
-                                    href={route('register')}
-                                    className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
-                                >
-                                    Register
-                                </Link>
-                            </>
-                        )}
-                    </nav>
-                </header>
-                <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
-                    <main className="flex w-full max-w-[335px] flex-col-reverse lg:max-w-4xl lg:flex-row">
-                        <div className="flex-1 rounded-br-lg rounded-bl-lg bg-white p-6 pb-12 text-[13px] leading-[20px] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-tl-lg lg:rounded-br-none lg:p-20 dark:bg-[#161615] dark:text-[#EDEDEC] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]">
-                            <h1 className="mb-1 font-medium">aaaaa</h1>
-                            <p className="mb-2 text-[#706f6c] dark:text-[#A1A09A]">
-                                Laravel has an incredibly rich ecosystem.
-                                <br />
-                                We suggest starting with the following.
-                            </p>
+            <Head title="Necode - Wujudkan Visi Digital Anda" />
 
-                            <ul className="flex gap-3 text-sm leading-normal">
-                                <li>
-                                    <a
-                                        href="https://cloud.laravel.com"
-                                        target="_blank"
-                                        className="inline-block rounded-sm border border-black bg-[#1b1b18] px-5 py-1.5 text-sm leading-normal text-white hover:border-black hover:bg-black dark:border-[#eeeeec] dark:bg-[#eeeeec] dark:text-[#1C1C1A] dark:hover:border-white dark:hover:bg-white"
-                                    >
-                                        aaaaa
-                                    </a>
-                                </li>
-                            </ul>
+            <div className="bg-background text-foreground min-h-screen">
+                {/* Navigation */}
+                <nav className="bg-background/80 border-border fixed left-0 right-0 top-0 z-50 border-b backdrop-blur-md">
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="flex h-16 items-center justify-between">
+                            <div className="flex items-center">
+                                <span className="text-primary text-2xl font-bold">Necode</span>
+                            </div>
+
+                            <div className="hidden items-center space-x-8 md:flex">
+                                <a href="#home" className="text-foreground hover:text-primary transition-colors">
+                                    Home
+                                </a>
+                                <a href="#about" className="text-foreground hover:text-primary transition-colors">
+                                    About
+                                </a>
+                                <a href="#services" className="text-foreground hover:text-primary transition-colors">
+                                    Services
+                                </a>
+                                <a href="#portfolio" className="text-foreground hover:text-primary transition-colors">
+                                    Portfolio
+                                </a>
+                                <a href="#team" className="text-foreground hover:text-primary transition-colors">
+                                    Team
+                                </a>
+                                <a href="#contact" className="text-foreground hover:text-primary transition-colors">
+                                    Contact
+                                </a>
+                            </div>
+
+                            <div className="flex items-center space-x-4">
+                                <ThemeToggle />
+                                <button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 py-2 transition-colors">
+                                    Get Started
+                                </button>
+                            </div>
                         </div>
-                    </main>
-                </div>
-                <div className="hidden h-14.5 lg:block"></div>
+                    </div>
+                </nav>
+
+                {/* Hero Section */}
+                <section id="home" className="gradient-bg flex min-h-screen items-center pt-16">
+                    <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+                        <h1 className="mb-6 text-5xl font-bold md:text-7xl">
+                            Wujudkan Visi <span className="text-primary">Digital</span> Anda
+                            <br />
+                            Bersama <span className="text-primary">Necode</span>
+                        </h1>
+                        <p className="text-muted-foreground mx-auto mb-8 max-w-3xl text-xl md:text-2xl">
+                            Kami menghadirkan solusi digital terdepan dengan teknologi modern untuk mengembangkan bisnis Anda
+                        </p>
+
+                        <div className="mb-16 flex flex-col justify-center gap-4 sm:flex-row">
+                            <button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-8 py-4 text-lg font-semibold transition-colors">
+                                Mulai Project
+                            </button>
+                            <button className="border-border bg-background/50 text-foreground hover:bg-background/80 rounded-lg border px-8 py-4 text-lg font-semibold transition-colors">
+                                Lihat Portfolio
+                            </button>
+                        </div>
+
+                        {/* Statistics */}
+                        <div className="mx-auto grid max-w-4xl grid-cols-2 gap-8 md:grid-cols-4">
+                            <div className="text-center">
+                                <div className="text-primary mb-2 text-4xl font-bold md:text-5xl">500+</div>
+                                <div className="text-muted-foreground">Project Selesai</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-primary mb-2 text-4xl font-bold md:text-5xl">100+</div>
+                                <div className="text-muted-foreground">Client Puas</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-primary mb-2 text-4xl font-bold md:text-5xl">50+</div>
+                                <div className="text-muted-foreground">Tim Ahli</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-primary mb-2 text-4xl font-bold md:text-5xl">5+</div>
+                                <div className="text-muted-foreground">Tahun Pengalaman</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </>
     );
